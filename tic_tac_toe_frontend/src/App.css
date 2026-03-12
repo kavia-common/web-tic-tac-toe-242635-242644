@@ -8,6 +8,9 @@
   --border-color: #e9ecef;
   --button-bg: #007bff;
   --button-text: #ffffff;
+  /* Accent colors (Ocean Professional) */
+  --accent-primary: #2563eb;
+  --accent-secondary: #f59e0b;
 }
 
 [data-theme="dark"] {
@@ -19,6 +22,9 @@
   --border-color: #404040;
   --button-bg: #0056b3;
   --button-text: #ffffff;
+  /* Accent colors remain consistent across themes */
+  --accent-primary: #2563eb;
+  --accent-secondary: #f59e0b;
 }
 
 .App {
@@ -27,6 +33,68 @@
   color: var(--text-primary);
   min-height: 100vh;
   transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Navbar (top-level layout, should not interfere with gameplay/content) */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: linear-gradient(180deg, var(--bg-primary), rgba(0, 0, 0, 0));
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.navbar-inner {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.navbar-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--text-primary);
+}
+
+.navbar-brand:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--accent-primary) 60%, transparent);
+  outline-offset: 3px;
+  border-radius: 10px;
+}
+
+.navbar-mark {
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  background: radial-gradient(
+    circle at 30% 30%,
+    var(--accent-secondary),
+    var(--accent-primary)
+  );
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent-primary) 18%, transparent);
+}
+
+.navbar-title {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.app-main {
+  /* Keeps content centered and ensures navbar doesn't overlap absolute elements inside header */
+  min-height: calc(100vh - 60px);
 }
 
 .App-logo {
@@ -42,7 +110,7 @@
 
 .App-header {
   background-color: var(--bg-secondary);
-  min-height: 100vh;
+  min-height: calc(100vh - 60px);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -74,6 +142,17 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+/* Theme toggle variant used inside navbar (not absolute-positioned) */
+.theme-toggle.theme-toggle--nav {
+  position: static;
+  background: var(--accent-primary);
+  box-shadow: 0 6px 18px rgba(37, 99, 235, 0.22);
+}
+
+.theme-toggle.theme-toggle--nav:hover {
+  opacity: 0.95;
+}
+
 .theme-toggle:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
@@ -100,5 +179,13 @@
     right: 10px;
     padding: 8px 16px;
     font-size: 12px;
+  }
+
+  .navbar-inner {
+    padding: 12px 14px;
+  }
+
+  .navbar-title {
+    font-size: 14px;
   }
 }
