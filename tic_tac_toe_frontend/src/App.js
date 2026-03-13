@@ -20,20 +20,10 @@ function App() {
     <div className="App">
       <nav className="navbar" aria-label="Primary navigation">
         <div className="navbar-inner">
-          <a className="navbar-brand" href="/" aria-label="Tic Tac Toe home">
+          {/* Title only (no links), centered. Mark is decorative. */}
+          <div className="navbar-titleWrap" aria-label="Tic Tac Toe">
             <span className="navbar-mark" aria-hidden="true" />
             <span className="navbar-title">Tic Tac Toe</span>
-          </a>
-
-          <div className="navbar-actions">
-            <button
-              className="theme-toggle theme-toggle--nav"
-              onClick={toggleTheme}
-              aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
-              type="button"
-            >
-              {theme === "light" ? "🌙 Dark" : "☀️ Light"}
-            </button>
           </div>
         </div>
       </nav>

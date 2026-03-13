@@ -51,22 +51,17 @@
   padding: 14px 18px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center; /* center the (only) title */
   gap: 12px;
 }
 
-.navbar-brand {
+/* Title-only navbar content (non-interactive) */
+.navbar-titleWrap {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  text-decoration: none;
   color: var(--text-primary);
-}
-
-.navbar-brand:focus-visible {
-  outline: 3px solid color-mix(in srgb, var(--accent-primary) 60%, transparent);
-  outline-offset: 3px;
-  border-radius: 10px;
+  user-select: none;
 }
 
 .navbar-mark {
@@ -84,12 +79,6 @@
 .navbar-title {
   font-weight: 700;
   letter-spacing: -0.02em;
-}
-
-.navbar-actions {
-  display: flex;
-  align-items: center;
-  gap: 10px;
 }
 
 .app-main {
